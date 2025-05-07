@@ -1,8 +1,70 @@
-abstract class StringsManager {
-  static const String personalizeExp = "Personalize Your Experience";
-  static const String startDesc =
-      "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.";
-  static const String language = "Language";
-  static const String theme = "Theme";
-  static const String letsStart = "Let's Start";
+class AppStrings {
+  static const String language = "language";
+  static const String arabic = "arabic";
+  static const String english = "english";
+  static const String theme = "theme";
+  static const String light = "light";
+  static const String dark = "dark";
+  static const String home = "home";
+  static const String map = "map";
+  static const String favorite = "favorite";
+  static const String profile = "profile";
+  static const String welcomeBack = "welcome_back";
+  static const String ahmedFayed = "ahmed_fayed";
+  static const String cairoEgypt = "cairo_egypt";
+  static const String sport = "sport";
+  static const String birthday = "birthday";
+  static const String meeting = "meeting";
+  static const String gaming = "gaming";
+  static const String workshop = "workshop";
+  static const String bookClub = "book_club";
+  static const String exhibition = "exhibition";
+  static const String holiday = "holiday";
+  static const String eating = "eating";
+  static const String all = "all";
+  static const String searchForEvent = "search_for_event";
+  static const String logout = "logout";
+  static const String name = "name";
+  static const String email = "email";
+  static const String password = "password";
+  static const String rePassword = "re_password";
+  static const String forgetPassword = "forget_password";
+  static const String login = "login";
+  static const String createAccount = "create_account";
+  static const String register = "register";
+  static const String dontHaveAccount = "dont_have_account";
+  static const String loginWithGoogle = "login_with_google";
+  static const String or = "or";
+  static const String alreadyHaveAccount = "already_have_account";
+  static const String logOutOfYourAccount = "log_out_of_your_account";
+  static const String cancel = "cancel";
+  static const String resetPassword = "reset_password";
+  static const String createEvent = "create_event";
+  static const String title = "title";
+  static const String description = "description";
+  static const String eventDate = "event_date";
+  static const String eventTime = "event_time";
+  static const String chooseDate = "choose_date";
+  static const String chooseTime = "choose_time";
+  static const String chooseEventLocation = "choose_event_location";
+  static const String addEvent = "add_event";
+  static const String eventTitle = "event_title";
+  static const String eventDescription = "event_description";
+  static const String location = "location";
+  static const String pleaseEnterATitle = "please_enter_a_title";
+  static const String pleaseEnterADescription = "please_enter_a_description";
+  static const String pleaseSelectADate = "please_select_a_date";
+  static const String pleaseSelectATime = "please_select_a_time";
+  static const String noFavoriteEventsYet = "no_favorite_events_yet";
+  static const String personalizeYourExperience = "personalize_your_experience";
+  static const String findEventsThatInspireYou = "find_events_that_inspire_you";
+  static const String effortlessEventPlanning = "effortless_event_planning";
+  static const String connectWithFriendsAndShareMoments =
+      "connect_with_friends_&_share_moments";
+  static const String chooseYourPreferred = "choose_your_preferred";
+  static const String diveIntoAWorldOfEvents = "dive_into_a_world_of_events";
+  static const String takeTheHassleOutOfOrganizingEvents =
+      "take_the_hassle_out_of_organizing_events";
+  static const String makeEveryEventMemorable = "make_every_event_memorable";
+  static const String letsStart = "lets_start";
 }

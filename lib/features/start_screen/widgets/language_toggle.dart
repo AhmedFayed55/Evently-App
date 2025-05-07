@@ -1,4 +1,5 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -15,6 +16,21 @@ class _LanguageToggleState extends State<LanguageToggle> {
   int currentValue = 0;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    // في مشكلة علشان ال context  فالفانكشن دي بتاخر ال init شوية لحد اول فريم بيتبني من السكرين
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (context.locale.languageCode == "ar") {
+        currentValue = 1;
+      } else {
+        currentValue = 0;
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AnimatedToggleSwitch<int>.rolling(
       current: currentValue,
@@ -22,6 +38,11 @@ class _LanguageToggleState extends State<LanguageToggle> {
       onChanged: (newValue) {
         setState(() {
           currentValue = newValue;
+          if (currentValue == 1) {
+            context.setLocale(Locale("ar"));
+          } else {
+            context.setLocale(Locale("en"));
+          }
         });
       },
 
