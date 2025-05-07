@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/helpers/spacing.dart';
 import 'package:evently_app/core/utils/asset_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/re_useable_widgets/CustomButton.dart';
 import '../../../core/utils/strings_manager.dart';
 import '../widgets/language_toggle.dart';
@@ -31,12 +33,12 @@ class StartScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    StringsManager.personalizeExp,
+                    AppStrings.personalizeYourExperience.tr(),
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   verticalSpace(28),
                   Text(
-                    StringsManager.startDesc,
+                    AppStrings.chooseYourPreferred.tr(),
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   verticalSpace(28),
@@ -44,7 +46,7 @@ class StartScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        StringsManager.language,
+                        AppStrings.language.tr(),
                         style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(fontWeight: FontWeight.w500),
                       ),
@@ -56,7 +58,7 @@ class StartScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        StringsManager.theme,
+                        AppStrings.theme.tr(),
                         style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(fontWeight: FontWeight.w500),
                       ),
@@ -67,7 +69,7 @@ class StartScreen extends StatelessWidget {
                 ],
               ),
             ),
-            CustomButton(title: StringsManager.letsStart, onPressed: () {}),
+            CustomButton(title: AppStrings.letsStart.tr(), onPressed: () {}),
           ],
         ),
       ),
