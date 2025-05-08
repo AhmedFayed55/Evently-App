@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'color_manager.dart';
+import 'app_colors.dart';
 
 class AppStyle {
   static ThemeData lightTheme = ThemeData(
     fontFamily: "Inter",
-    scaffoldBackgroundColor: ColorManager.background,
+    scaffoldBackgroundColor: AppColors.background,
     colorScheme: ColorScheme.light(
-      primary: ColorManager.lightPrimary,
-      secondary: ColorManager.lightSecondary,
-      tertiary: ColorManager.lightTeritary,
-      onPrimaryContainer: ColorManager.darkSecondary,
+      primary: AppColors.lightPrimary,
+      secondary: AppColors.lightSecondary,
+      tertiary: AppColors.lightTeritary,
+      onPrimaryContainer: AppColors.darkSecondary,
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
@@ -20,12 +20,12 @@ class AppStyle {
       titleMedium: TextStyle(
         fontWeight: FontWeight.w700,
         fontSize: 20,
-        color: ColorManager.lightPrimary,
+        color: AppColors.lightPrimary,
       ),
       titleSmall: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w500,
-        color: ColorManager.lightSecondary,
+        color: AppColors.black,
       ),
       labelLarge: TextStyle(
         fontSize: 20,
@@ -37,12 +37,12 @@ class AppStyle {
 
   static ThemeData darkTheme = ThemeData(
     fontFamily: "Inter",
-    scaffoldBackgroundColor: ColorManager.backgroundDark,
+    scaffoldBackgroundColor: AppColors.backgroundDark,
     colorScheme: ColorScheme.dark(
-      primary: ColorManager.darkPrimary,
-      secondary: ColorManager.darkSecondary,
-      tertiary: ColorManager.darkTeritary,
-      onPrimaryContainer: ColorManager.lightSecondary,
+      primary: AppColors.darkPrimary,
+      secondary: AppColors.darkSecondary,
+      tertiary: AppColors.darkTeritary,
+      onPrimaryContainer: AppColors.lightSecondary,
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
@@ -52,12 +52,12 @@ class AppStyle {
       titleMedium: TextStyle(
         fontWeight: FontWeight.w700,
         fontSize: 20,
-        color: ColorManager.darkPrimary,
+        color: AppColors.darkPrimary,
       ),
       titleSmall: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w500,
-        color: ColorManager.darkSecondary,
+        color: AppColors.white,
       ),
       labelLarge: TextStyle(
         fontSize: 20,

@@ -68,4 +68,5 @@ class AppStrings {
   static const String makeEveryEventMemorable = "make_every_event_memorable";
   static const String letsStart = "lets_start";
   static const String currentThemeMode = "theme";
+  static const String firstTime = "isFirstTime";
 }

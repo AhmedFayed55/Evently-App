@@ -52,8 +52,8 @@ class _LanguageToggleState extends State<LanguageToggle> {
         indicatorColor: Theme.of(context).colorScheme.primary,
       ),
       iconList: [
-        SvgPicture.asset(AssetsManager.englishIcon, height: 30, width: 30),
-        SvgPicture.asset(AssetsManager.arabicIcon, height: 30, width: 30),
+        SvgPicture.asset(AppImages.englishIcon, height: 30, width: 30),
+        SvgPicture.asset(AppImages.arabicIcon, height: 30, width: 30),
       ],
     );
   }

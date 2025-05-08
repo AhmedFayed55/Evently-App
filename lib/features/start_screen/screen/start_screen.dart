@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/helpers/spacing.dart';
+import 'package:evently_app/core/utils/app_routes.dart';
 import 'package:evently_app/core/utils/asset_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Image.asset(AssetsManager.logo)),
+      appBar: AppBar(title: Image.asset(AppImages.logo)),
       body: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 28.h, horizontal: 16.w),
@@ -29,7 +30,7 @@ class StartScreen extends StatelessWidget {
                   Expanded(
                     child: Align(
                       alignment: Alignment.center,
-                      child: Image.asset(AssetsManager.beingCreative1),
+                      child: Image.asset(AppImages.beingCreative1),
                     ),
                   ),
                   Text(
@@ -69,7 +70,10 @@ class StartScreen extends StatelessWidget {
                 ],
               ),
             ),
-            CustomButton(title: AppStrings.letsStart.tr(), onPressed: () {}),
+            CustomButton(title: AppStrings.letsStart.tr(), onPressed: () {
+              Navigator.of(context).pushReplacementNamed(
+                  AppRoutes.onboardingScreen);
+            }),
           ],
         ),
       ),

@@ -1,18 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/helpers/shared_prefrence.dart';
 import 'package:evently_app/core/utils/app_routes.dart';
-import 'package:evently_app/core/utils/app_theme.dart';
 import 'package:evently_app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import 'features/start_screen/screen/start_screen.dart';
+import 'core/utils/strings_manager.dart';
+import 'evently_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await SharedPreferenceUtils.init();
+  String routeName;
+  var isFirstTime = SharedPreferenceUtils.getData(key: AppStrings.firstTime);
+  if (isFirstTime == null) {
+    routeName = AppRoutes.startScreen;
+  } else {
+    routeName = AppRoutes.homeScreen;
+  }
   runApp(EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations',
@@ -23,32 +29,7 @@ void main() async {
       // default is true already but this only for clarity
       child: ChangeNotifierProvider(
           create: (_) => ThemeProvider(),
-          child: MyApp())));
+          child: EventlyApp(routeName: routeName,))));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    return ScreenUtilInit(
-      designSize: const Size(393, 841),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          debugShowCheckedModeBanner: false,
-          theme: AppStyle.lightTheme,
-          darkTheme: AppStyle.darkTheme,
-          themeMode: themeProvider.currentTheme,
-          routes: {AppRoutes.startScreen: (_) => const StartScreen()},
-          initialRoute: AppRoutes.startScreen,
-        );
-      },
-    );
-  }
-}
