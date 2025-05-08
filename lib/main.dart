@@ -1,14 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:evently_app/core/helpers/shared_prefrence.dart';
 import 'package:evently_app/core/utils/app_routes.dart';
 import 'package:evently_app/core/utils/app_theme.dart';
+import 'package:evently_app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import 'features/start_screen/screen/start_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await SharedPreferenceUtils.init();
   runApp(EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations',
@@ -17,7 +21,9 @@ void main() async {
       // first time open language
       saveLocale: true,
       // default is true already but this only for clarity
-      child: MyApp()));
+      child: ChangeNotifierProvider(
+          create: (_) => ThemeProvider(),
+          child: MyApp())));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,6 +31,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     return ScreenUtilInit(
       designSize: const Size(393, 841),
       minTextAdapt: true,
@@ -37,7 +44,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: AppStyle.lightTheme,
           darkTheme: AppStyle.darkTheme,
-          themeMode: AppStyle.isDark ? ThemeMode.dark : ThemeMode.light,
+          themeMode: themeProvider.currentTheme,
           routes: {AppRoutes.startScreen: (_) => const StartScreen()},
           initialRoute: AppRoutes.startScreen,
         );
