@@ -47,7 +47,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
       ),
       iconList: [
         SvgPicture.asset(
-          AssetsManager.sunIcon,
+          AppImages.sunIcon,
           height: 30,
           width: 30,
           colorFilter: ColorFilter.mode(
@@ -58,7 +58,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
           ),
         ),
         SvgPicture.asset(
-          AssetsManager.moonIcon,
+          AppImages.moonIcon,
           height: 30,
           width: 30,
           colorFilter: ColorFilter.mode(
