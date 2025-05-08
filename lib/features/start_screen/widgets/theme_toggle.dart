@@ -1,7 +1,11 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
+import 'package:evently_app/core/utils/strings_manager.dart';
+import 'package:evently_app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/helpers/shared_prefrence.dart';
 import '../../../core/utils/asset_manager.dart';
 
 class ThemeToggle extends StatefulWidget {
@@ -12,16 +16,27 @@ class ThemeToggle extends StatefulWidget {
 }
 
 class _ThemeToggleState extends State<ThemeToggle> {
-  int currentValue = 0;
+  late ThemeProvider themeProvider;
 
   @override
   Widget build(BuildContext context) {
+    themeProvider = Provider.of<ThemeProvider>(context);
+    int currentValue = themeProvider.currentTheme == ThemeMode.light ? 0 : 1;
     return AnimatedToggleSwitch<int>.rolling(
       current: currentValue,
       values: [0, 1],
       onChanged: (newValue) {
         setState(() {
           currentValue = newValue;
+          if (currentValue == 0) {
+            themeProvider.changeThemeMode(ThemeMode.light);
+            SharedPreferenceUtils.saveData(
+                key: AppStrings.currentThemeMode, value: ThemeMode.light);
+          } else {
+            themeProvider.changeThemeMode(ThemeMode.dark);
+            SharedPreferenceUtils.saveData(
+                key: AppStrings.currentThemeMode, value: ThemeMode.dark);
+          }
         });
       },
 

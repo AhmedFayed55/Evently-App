@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'color_manager.dart';
 
 class AppStyle {
-  static bool isDark = false;
   static ThemeData lightTheme = ThemeData(
     fontFamily: "Inter",
     scaffoldBackgroundColor: ColorManager.background,
