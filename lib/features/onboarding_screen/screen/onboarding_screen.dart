@@ -1,8 +1,8 @@
 import 'package:evently_app/core/helpers/shared_prefrence.dart';
 import 'package:evently_app/core/utils/app_colors.dart';
+import 'package:evently_app/core/utils/app_images.dart';
 import 'package:evently_app/core/utils/app_routes.dart';
-import 'package:evently_app/core/utils/asset_manager.dart';
-import 'package:evently_app/core/utils/strings_manager.dart';
+import 'package:evently_app/core/utils/app_strings.dart';
 import 'package:evently_app/features/onboarding_screen/model/onboarding_screen_model.dart';
 import 'package:evently_app/features/onboarding_screen/widgets/onboarding_item.dart';
 import 'package:flutter/material.dart';
