@@ -5,7 +5,7 @@ import 'package:evently_app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'core/utils/strings_manager.dart';
+import 'core/utils/app_strings.dart';
 import 'evently_app.dart';
 
 void main() async {

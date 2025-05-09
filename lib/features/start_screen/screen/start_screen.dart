@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/helpers/spacing.dart';
+import 'package:evently_app/core/utils/app_images.dart';
 import 'package:evently_app/core/utils/app_routes.dart';
-import 'package:evently_app/core/utils/asset_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/re_useable_widgets/CustomButton.dart';
-import '../../../core/utils/strings_manager.dart';
+import '../../../core/utils/app_strings.dart';
 import '../widgets/language_toggle.dart';
 import '../widgets/theme_toggle.dart';
 

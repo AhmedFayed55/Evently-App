@@ -1,12 +1,12 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:evently_app/core/utils/strings_manager.dart';
+import 'package:evently_app/core/utils/app_strings.dart';
 import 'package:evently_app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/helpers/shared_prefrence.dart';
-import '../../../core/utils/asset_manager.dart';
+import '../../../core/utils/app_images.dart';
 
 class ThemeToggle extends StatefulWidget {
   const ThemeToggle({super.key});
