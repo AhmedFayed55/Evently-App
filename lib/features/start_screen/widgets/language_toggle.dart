@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../core/utils/asset_manager.dart';
+import '../../../core/utils/app_images.dart';
 
 class LanguageToggle extends StatefulWidget {
   const LanguageToggle({super.key});
@@ -22,11 +22,9 @@ class _LanguageToggleState extends State<LanguageToggle> {
 
     // في مشكلة علشان ال context  فالفانكشن دي بتاخر ال init شوية لحد اول فريم بيتبني من السكرين
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (context.locale.languageCode == "ar") {
-        currentValue = 1;
-      } else {
-        currentValue = 0;
-      }
+      setState(() {
+        currentValue = context.locale.languageCode == "ar" ? 1 : 0;
+      });
     });
   }
 

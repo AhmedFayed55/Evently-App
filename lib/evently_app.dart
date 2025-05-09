@@ -1,4 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:evently_app/features/auth/forget_password/page/forget_pass.dart';
+import 'package:evently_app/features/auth/login/page/login_screen.dart';
+import 'package:evently_app/features/auth/register/page/register.dart';
 import 'package:evently_app/features/home/home_screen.dart';
 import 'package:evently_app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +38,11 @@ class EventlyApp extends StatelessWidget {
             AppRoutes.startScreen: (_) => const StartScreen(),
             AppRoutes.onboardingScreen: (_) => const OnboardingScreen(),
             AppRoutes.homeScreen: (_) => const HomeScreen(),
+            AppRoutes.login: (_) => const LoginScreen(),
+            AppRoutes.register: (_) => const RegisterScreen(),
+            AppRoutes.forgetPassword: (_) => const ForgetPassword(),
           },
-          initialRoute: routeName,
+          initialRoute: AppRoutes.login,
         );
       },
     );

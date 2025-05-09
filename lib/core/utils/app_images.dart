@@ -8,4 +8,10 @@ abstract class AppImages {
   static const String englishIcon = "assets/images/LR.svg";
   static const String moonIcon = "assets/images/Moon.svg";
   static const String sunIcon = "assets/images/Sun.svg";
+  static const String authLogo = "assets/images/auth_logo.png";
+  static const String emailSvg = "assets/images/email_svg.svg";
+  static const String passwordSvg = "assets/images/password_svg.svg";
+  static const String googleSvg = "assets/images/google_svg.svg";
+  static const String nameSvg = "assets/images/name_svg.svg";
+  static const String forgetPass = "assets/images/forget_pass.png";
 }
