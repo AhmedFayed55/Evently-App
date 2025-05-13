@@ -43,6 +43,12 @@ dependencies:
   animated_toggle_switch: ^0.8.5
   easy_localization: ^3.0.7+1
   smooth_page_indicator: ^1.2.1
+  firebase_core: ^3.13.0
+  firebase_auth: ^5.5.3
+  connectivity_plus: ^6.1.4
+  dartz: ^0.10.1
+  awesome_dialog: ^3.2.1
+
 
 
 dev_dependencies:

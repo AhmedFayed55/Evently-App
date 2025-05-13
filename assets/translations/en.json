@@ -64,5 +64,18 @@
   "dive_into_a_world_of_events": "Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.",
   "take_the_hassle_out_of_organizing_events": "Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.",
   "make_every_event_memorable": "Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.",
-  "lets_start": "Let's Start"
+  "error": "Error",
+  "fail": "Fail",
+  "success": "Success",
+  "lets_start": "Let's Start",
+  "your_account_has": "Your account has been created successfully. Please log in using your email and password.",
+  "processing_your": "Processing your request...",
+  "the_password_too_week": "The password provided is too weak.",
+  "account_exists": "The account already exists for that email.",
+  "ok": "Ok",
+  "no_internet": "No internet connection. Please check your network and try again.",
+  "No_user_found": "No user found for that email.",
+  "wrong_password_for_this_user": "Wrong password provided for that user.",
+  "login_successfully": "Login Successfully , Welcome back",
+  "reset_password_email_sent": "A link has been sent to your email address. You can reset your password from there."
 }

@@ -14,4 +14,5 @@ abstract class AppImages {
   static const String googleSvg = "assets/images/google_svg.svg";
   static const String nameSvg = "assets/images/name_svg.svg";
   static const String forgetPass = "assets/images/forget_pass.png";
+  static const String successSvg = "assets/images/success.svg";
 }
