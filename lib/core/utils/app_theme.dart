@@ -84,7 +84,7 @@ class AppStyle {
       backgroundColor: Colors.transparent,
       centerTitle: true,
       iconTheme: IconThemeData(
-          color: AppColors.primaryDark
+          color: AppColors.primaryLight
       ),
     ),
     textTheme: TextTheme(
