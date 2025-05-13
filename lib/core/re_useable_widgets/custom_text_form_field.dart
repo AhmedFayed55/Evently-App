@@ -26,7 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUnfocus,
       obscureText: isObscure ?? false,
       keyboardType: keyboard,
       obscuringCharacter: "*",

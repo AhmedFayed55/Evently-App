@@ -69,4 +69,17 @@ class AppStrings {
   static const String letsStart = "lets_start";
   static const String currentThemeMode = "theme";
   static const String firstTime = "isFirstTime";
+  static const String success = "success";
+  static const String fail = "fail";
+  static const String error = "error";
+  static const String yourAccountHas = "your_account_has";
+  static const String processingYourRequest = "processing_your";
+  static const String passwordIsTooWeek = "the_password_too_week";
+  static const String accountExists = "account_exists";
+  static const String ok = "ok";
+  static const String noInternetConnection = "no_internet";
+  static const String noUserFound = "No_user_found";
+  static const String wrongPasswordForThisUser = "wrong_password_for_this_user";
+  static const String loginSuccessfully = "login_successfully";
+  static const String resetPasswordEmailSent = "reset_password_email_sent";
 }

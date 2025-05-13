@@ -2,14 +2,19 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/helpers/shared_prefrence.dart';
 import 'package:evently_app/core/utils/app_routes.dart';
 import 'package:evently_app/providers/theme_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'core/utils/app_strings.dart';
 import 'evently_app.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await EasyLocalization.ensureInitialized();
   await SharedPreferenceUtils.init();
   String routeName;
