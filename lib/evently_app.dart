@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/features/auth/presentation/pages/forget_pass.dart';
 import 'package:evently_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:evently_app/providers/theme_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +43,10 @@ class EventlyApp extends StatelessWidget {
             AppRoutes.register: (_) => const RegisterScreen(),
             AppRoutes.forgetPassword: (_) => ForgetPassword(),
           },
-          initialRoute: AppRoutes.homeScreen,
+          initialRoute:
+              FirebaseAuth.instance.currentUser == null
+                  ? AppRoutes.login
+                  : AppRoutes.homeScreen,
         );
       },
     );
