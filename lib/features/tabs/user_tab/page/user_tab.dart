@@ -4,6 +4,7 @@ import 'package:evently_app/core/utils/app_strings.dart';
 import 'package:evently_app/features/tabs/user_tab/widgets/language_bottom_sheet.dart';
 import 'package:evently_app/features/tabs/user_tab/widgets/logout_button.dart';
 import 'package:evently_app/providers/theme_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -66,6 +67,7 @@ class _UserTabState extends State<UserTab> {
         posActionName: AppStrings.cancel.tr(),
         ngeActionName: AppStrings.logout.tr(),
         ngeAction: () {
+          FirebaseAuth.instance.signOut();
           Navigator.of(context).pushNamedAndRemoveUntil(
               AppRoutes.login, (route) => false);
         });
