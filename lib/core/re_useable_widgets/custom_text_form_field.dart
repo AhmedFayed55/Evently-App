@@ -12,6 +12,8 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.keyboard,
     this.validator,
+    this.borderColor,
+    this.hintStyle,
   });
 
   final String hintText;
@@ -21,6 +23,8 @@ class CustomTextFormField extends StatelessWidget {
   final bool? isObscure;
   final TextInputType? keyboard;
   final String? Function(String?)? validator;
+  final Color? borderColor;
+  final TextStyle? hintStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class CustomTextFormField extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: borderColor ?? Theme.of(context).colorScheme.onSecondary,
             width: 1.4,
           ),
         ),
@@ -57,7 +61,7 @@ class CustomTextFormField extends StatelessWidget {
             width: 1.4,
           ),
         ),
-        hintStyle: Theme.of(context).textTheme.labelSmall,
+        hintStyle: hintStyle ?? Theme.of(context).textTheme.labelSmall,
         hintText: hintText,
         prefixIcon: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),

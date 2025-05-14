@@ -15,4 +15,23 @@ abstract class AppImages {
   static const String nameSvg = "assets/images/name_svg.svg";
   static const String forgetPass = "assets/images/forget_pass.png";
   static const String successSvg = "assets/images/success.svg";
+  static const String homeSelected = "assets/images/home_selected_svg.svg";
+  static const String homeUnselected = "assets/images/home_unselected_svg.svg";
+  static const String favoriteSelected =
+      "assets/images/favorite_selected_svg.svg";
+  static const String favoriteUnselected =
+      "assets/images/favorite_unselected_svg.svg";
+  static const String mapSelected = "assets/images/map_selected_svg.svg";
+  static const String mapUnselected = "assets/images/map_unselected_svg.svg";
+  static const String userSelected = "assets/images/user_selected_svg.svg";
+  static const String userUnselected = "assets/images/user_unselected_svg.svg";
+  static const String birthdaySvg = "assets/images/birthday_svg.svg";
+  static const String bookSvg = "assets/images/book_svg.svg";
+  static const String eatingSvg = "assets/images/eating_svg.svg";
+  static const String gamingSvg = "assets/images/gaming_svg.svg";
+  static const String holidaySvg = "assets/images/holiday_svg.svg";
+  static const String meetingSvg = "assets/images/meeting_svg.svg";
+  static const String sportSvg = "assets/images/sport_svg.svg";
+  static const String allSvg = "assets/images/all_svg.svg";
+  static const String searchSvg = "assets/images/search_svg.svg";
 }

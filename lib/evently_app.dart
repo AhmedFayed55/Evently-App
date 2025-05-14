@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/features/auth/presentation/pages/forget_pass.dart';
 import 'package:evently_app/features/auth/presentation/pages/login_screen.dart';
-import 'package:evently_app/features/home/home_screen.dart';
 import 'package:evently_app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'core/utils/app_routes.dart';
 import 'core/utils/app_theme.dart';
 import 'features/auth/presentation/pages/register.dart';
+import 'features/main_screen/main_screen.dart';
 import 'features/onboarding_screen/screen/onboarding_screen.dart';
 import 'features/start_screen/screen/start_screen.dart';
 
@@ -37,12 +37,12 @@ class EventlyApp extends StatelessWidget {
           routes: {
             AppRoutes.startScreen: (_) => const StartScreen(),
             AppRoutes.onboardingScreen: (_) => const OnboardingScreen(),
-            AppRoutes.homeScreen: (_) => const HomeScreen(),
+            AppRoutes.homeScreen: (_) => MainScreen(),
             AppRoutes.login: (_) => const LoginScreen(),
             AppRoutes.register: (_) => const RegisterScreen(),
             AppRoutes.forgetPassword: (_) => ForgetPassword(),
           },
-          initialRoute: AppRoutes.register,
+          initialRoute: AppRoutes.homeScreen,
         );
       },
     );
