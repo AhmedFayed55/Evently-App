@@ -8,7 +8,7 @@ class AppStrings {
   static const String home = "home";
   static const String map = "map";
   static const String favorite = "favorite";
-  static const String profile = "profile";
+  static const String user = "user";
   static const String welcomeBack = "welcome_back";
   static const String ahmedFayed = "ahmed_fayed";
   static const String cairoEgypt = "cairo_egypt";

@@ -4,6 +4,22 @@ import 'app_colors.dart';
 
 class AppStyle {
   static ThemeData lightTheme = ThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: AppColors.primaryLight,
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: AppColors.white
+        ),
+        unselectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: AppColors.white
+        ),
+        unselectedItemColor: AppColors.white,
+        selectedItemColor: AppColors.white
+    ),
     fontFamily: "Inter",
     scaffoldBackgroundColor: AppColors.background,
     colorScheme: ColorScheme.light(
@@ -13,6 +29,9 @@ class AppStyle {
       onPrimaryContainer: AppColors.darkSecondary,
       onSecondary: AppColors.grey,
       outline: AppColors.white, // for login with google background
+        onPrimary: AppColors.white,
+        // for selected label in tabs
+        onPrimaryFixed: AppColors.primaryLight //for tab bar item svg color
     ),
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(
@@ -61,19 +80,55 @@ class AppStyle {
           fontWeight: FontWeight.w500,
           color: AppColors.primaryLight
       ),
+      bodySmall: TextStyle(
+        // for tabs selected label
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColors.primaryLight
+      ),
+      titleLarge: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: AppColors.black
+      ),
+      bodyLarge: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: AppColors.black
+      ),
     ),
   );
 
   static ThemeData darkTheme = ThemeData(
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.primaryDark,
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: AppColors.white,
+      unselectedItemColor: AppColors.white,
+      selectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: AppColors.white
+      ),
+      unselectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: AppColors.white
+      ),
+    ),
     fontFamily: "Inter",
     scaffoldBackgroundColor: AppColors.backgroundDark,
     colorScheme: ColorScheme.dark(
-      primary: AppColors.darkPrimary,
+        primary: AppColors.primaryDark,
       secondary: AppColors.darkSecondary,
       tertiary: AppColors.darkTeritary,
       onPrimaryContainer: AppColors.lightSecondary,
       onSecondary: AppColors.primaryLight,
-      outline: AppColors.primaryDark, // for login with google background
+        outline: AppColors.primaryDark,
+        // for login with google background
+        onPrimary: AppColors.primaryLight,
+        // for selected label in tabs
+        onPrimaryFixed: AppColors.white //for tab bar item svg color
     ),
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(
@@ -119,6 +174,22 @@ class AppStyle {
         // login with google text color
           fontSize: 20,
           fontWeight: FontWeight.w500,
+          color: AppColors.white
+      ),
+      bodySmall: TextStyle(
+        // for tabs selected label
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColors.white
+      ),
+      titleLarge: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: AppColors.white
+      ),
+      bodyLarge: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
           color: AppColors.white
       ),
     ),

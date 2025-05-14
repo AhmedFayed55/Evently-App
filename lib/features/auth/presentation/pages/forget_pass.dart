@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/helpers/dialogue_utils.dart';
-import 'package:evently_app/core/helpers/validators.dart';
+import 'package:evently_app/core/helpers/validation_helper.dart';
 import 'package:evently_app/core/re_useable_widgets/CustomButton.dart';
 import 'package:evently_app/core/re_useable_widgets/custom_text_form_field.dart';
 import 'package:evently_app/core/utils/app_images.dart';
@@ -31,7 +31,7 @@ class ForgetPassword extends StatelessWidget {
               children: [
                 Image.asset(AppImages.forgetPass),
                 CustomTextFormField(
-                  validator: AppValidators.validateEmail,
+                  validator: ValidationHelper.validateEmail,
                   controller: emailController,
                   hintText: AppStrings.email.tr(),
                   prefixIconImage: AppImages.emailSvg,

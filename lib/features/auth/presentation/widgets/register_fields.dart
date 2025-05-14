@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:evently_app/core/helpers/validation_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/helpers/validators.dart';
 import '../../../../core/re_useable_widgets/custom_text_form_field.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_images.dart';
@@ -46,7 +46,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
         ),
         CustomTextFormField(
           validator: (val) {
-            return AppValidators.validateEmail(val);
+            return ValidationHelper.validateEmail(val);
           },
           hintText: AppStrings.email.tr(),
           controller: widget.emailController,
@@ -54,7 +54,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
         ),
         CustomTextFormField(
           validator: (val) {
-            return AppValidators.validatePassword(val);
+            return ValidationHelper.validatePassword(val);
           },
           isObscure: isObscure,
           hintText: AppStrings.password.tr(),
@@ -76,7 +76,8 @@ class _RegisterFieldsState extends State<RegisterFields> {
         ),
         CustomTextFormField(
           validator: (val) {
-            return AppValidators.validatePassword(val);
+            return ValidationHelper.validateConfirmPassword(
+                val, widget.passController.text);
           },
           isObscure: isObscure2,
           hintText: AppStrings.rePassword.tr(),
