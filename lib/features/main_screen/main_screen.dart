@@ -62,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
         shape: StadiumBorder(
           side: BorderSide(color: AppColors.white, width: 4.5),
         ),
-        child: Icon(Icons.add, size: 40),
+        child: Icon(Icons.add, size: 40, color: AppColors.white,),
       ),
       body: tabs[currentIndex],
     );
