@@ -1,21 +1,34 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/utils/app_colors.dart';
 import 'package:evently_app/core/utils/app_strings.dart';
-import 'package:evently_app/core/utils/text_styles.dart';
+import 'package:evently_app/features/tabs/user_tab/widgets/language_bottom_sheet.dart';
+import 'package:evently_app/features/tabs/user_tab/widgets/logout_button.dart';
+import 'package:evently_app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../core/helpers/dialogue_utils.dart';
+import '../../../../core/utils/app_routes.dart';
+import '../widgets/custom_drop_down.dart';
 import '../widgets/custom_user_app_bar_title.dart';
+import '../widgets/theme_bottom_sheet.dart';
 
-class UserTab extends StatelessWidget {
+class UserTab extends StatefulWidget {
   const UserTab({super.key});
 
   @override
+  State<UserTab> createState() => _UserTabState();
+}
+
+class _UserTabState extends State<UserTab> {
+  @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80)),
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(60)),
         ),
         backgroundColor: AppColors.primaryLight,
         toolbarHeight: 150.h,
@@ -27,73 +40,61 @@ class UserTab extends StatelessWidget {
           spacing: 16.h,
           children: [
             CustomDropdown(
+              onTap: showLanguageBottomSheet,
               label: AppStrings.language,
-              value: AppStrings.english,
+              value: context.locale.languageCode == "en" ? AppStrings.english
+                  : AppStrings.arabic,
             ),
-            CustomDropdown(label: AppStrings.theme, value: AppStrings.light),
+            CustomDropdown(
+                onTap: showThemeBottomSheet,
+                label: AppStrings.theme,
+                value: themeProvider.currentTheme == ThemeMode.light
+                    ? AppStrings.light
+                    : AppStrings.dark),
             Spacer(),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                backgroundColor: Colors.red,
-                minimumSize: Size(double.infinity, 56.h),
-              ),
-              child: Row(
-                spacing: 8.w,
-                children: [
-                  Icon(Icons.logout, color: AppColors.white),
-                  Text(
-                    AppStrings.logout.tr(),
-                    style: TextStyles.regular20white,
-                  ),
-                ],
-              ),
-            ),
+            LogoutButton(onPressed: onLogoutClick,),
           ],
         ),
       ),
     );
   }
-}
 
-class CustomDropdown extends StatelessWidget {
-  const CustomDropdown({super.key, required this.label, required this.value});
+  void onLogoutClick() {
+    DialogueUtils.showMessage(
+        context: context,
+        message: AppStrings.logOutOfYourAccount.tr(),
+        posActionName: AppStrings.cancel.tr(),
+        ngeActionName: AppStrings.logout.tr(),
+        ngeAction: () {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.login, (route) => false);
+        });
+  }
 
-  final String label;
-  final String value;
+  void showThemeBottomSheet() {
+    showModalBottomSheet(
+      backgroundColor: AppColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+      ),
+      context: context, builder: (context) => ThemeBottomSheet(),);
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 16.h,
-      children: [
-        Text(label.tr(), style: Theme.of(context).textTheme.bodyLarge),
-        InkWell(
-          onTap: () {},
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(width: 2, color: AppColors.primaryLight),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(value.tr(), style: TextStyles.bold20Primary),
-                Icon(
-                  Icons.arrow_drop_down,
-                  color: AppColors.primaryLight,
-                  size: 35,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
+  void showLanguageBottomSheet() {
+    showModalBottomSheet(
+      backgroundColor: AppColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+      ),
+      context: context, builder: (context) => LanguageBottomSheet(),);
   }
 }
+
+
+
+
+
+
+

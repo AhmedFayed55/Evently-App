@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  ThemeMode currentTheme = ThemeMode.light;
+  ThemeMode currentTheme = ThemeMode.dark;
 
   // SharedPreferenceUtils.getThemeMode(
   //   AppStrings.currentThemeMode,
