@@ -77,5 +77,6 @@
   "No_user_found": "No user found for that email.",
   "wrong_password_for_this_user": "Wrong password provided for that user.",
   "login_successfully": "Login Successfully , Welcome back",
-  "reset_password_email_sent": "A link has been sent to your email address. You can reset your password from there."
+  "reset_password_email_sent": "A link has been sent to your email address. You can reset your password from there.",
+  "this_field_is_required": "This field is required"
 }

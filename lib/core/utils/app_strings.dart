@@ -82,4 +82,5 @@ class AppStrings {
   static const String wrongPasswordForThisUser = "wrong_password_for_this_user";
   static const String loginSuccessfully = "login_successfully";
   static const String resetPasswordEmailSent = "reset_password_email_sent";
+  static const String thisFieldIsRequired = "this_field_is_required";
 }

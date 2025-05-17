@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:evently_app/features/add_event/presentation/pages/add_event.dart';
 import 'package:evently_app/features/auth/presentation/pages/forget_pass.dart';
 import 'package:evently_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:evently_app/providers/theme_provider.dart';
@@ -38,10 +39,11 @@ class EventlyApp extends StatelessWidget {
           routes: {
             AppRoutes.startScreen: (_) => const StartScreen(),
             AppRoutes.onboardingScreen: (_) => const OnboardingScreen(),
-            AppRoutes.homeScreen: (_) => MainScreen(),
+            AppRoutes.homeScreen: (_) => const MainScreen(),
             AppRoutes.login: (_) => const LoginScreen(),
             AppRoutes.register: (_) => const RegisterScreen(),
             AppRoutes.forgetPassword: (_) => ForgetPassword(),
+            AppRoutes.addEvent: (_) => const AddEventScreen(),
           },
           initialRoute:
               FirebaseAuth.instance.currentUser == null
