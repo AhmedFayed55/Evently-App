@@ -31,7 +31,9 @@ class AppStyle {
       outline: AppColors.white, // for login with google background
         onPrimary: AppColors.white,
         // for selected label in tabs
-        onPrimaryFixed: AppColors.primaryLight //for tab bar item svg color
+        onPrimaryFixed: AppColors.primaryLight,
+        //for tab bar item svg color
+        onTertiary: Color(0xffF2FEFF)
     ),
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(
@@ -46,7 +48,6 @@ class AppStyle {
       ),
     ),
     textTheme: TextTheme(
-
       titleMedium: TextStyle(
         fontWeight: FontWeight.w700,
         fontSize: 20,
@@ -96,6 +97,11 @@ class AppStyle {
           fontWeight: FontWeight.bold,
           color: AppColors.black
       ),
+      bodyMedium: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          color: Color(0xffF2FEFF)
+      ),
     ),
   );
 
@@ -128,7 +134,9 @@ class AppStyle {
         // for login with google background
         onPrimary: AppColors.primaryLight,
         // for selected label in tabs
-        onPrimaryFixed: AppColors.white //for tab bar item svg color
+        onPrimaryFixed: AppColors.white,
+        //for tab bar item svg color
+        onTertiary: Color(0xff101127)
     ),
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(
@@ -191,6 +199,11 @@ class AppStyle {
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: AppColors.white
+      ),
+      bodyMedium: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          color: Color(0xff101127)
       ),
     ),
   );
