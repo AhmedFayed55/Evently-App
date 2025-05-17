@@ -44,7 +44,7 @@ class _TabBarCategoriesState extends State<TabBarCategories> {
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 15.w),
         scrollDirection: Axis.horizontal,
-        itemCount: 8,
+        itemCount: eventNames.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {

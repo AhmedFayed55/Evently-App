@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/utils/app_colors.dart';
 import 'package:evently_app/core/utils/app_images.dart';
+import 'package:evently_app/core/utils/app_routes.dart';
 import 'package:evently_app/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,7 +12,7 @@ import '../tabs/map_tab/page/map_tab.dart';
 import '../tabs/user_tab/page/user_tab.dart';
 
 class MainScreen extends StatefulWidget {
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -58,6 +59,7 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // todo: navigate to add new event screen
+          Navigator.of(context).pushNamed(AppRoutes.addEvent);
         },
         shape: StadiumBorder(
           side: BorderSide(color: AppColors.white, width: 4.5),

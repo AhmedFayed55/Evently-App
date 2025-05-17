@@ -34,4 +34,20 @@ abstract class AppImages {
   static const String sportSvg = "assets/images/sport_svg.svg";
   static const String allSvg = "assets/images/all_svg.svg";
   static const String searchSvg = "assets/images/search_svg.svg";
+  static const String titleSvg = "assets/images/title_svg.svg";
+  static const String gpsSvg = "assets/images/gps_svg.svg";
+  static const String birthdayLight = "assets/images/birthday_light.png";
+  static const String birthdayDark = "assets/images/birthday_dark.png";
+  static const String bookClubLight = "assets/images/bookclub_light.png";
+  static const String bookClubDark = "assets/images/bookclub_dark.png";
+  static const String eatingLight = "assets/images/eating_light.png";
+  static const String eatingDark = "assets/images/eating_dark.png";
+  static const String gamingLight = "assets/images/gamin_light.png";
+  static const String gamingDark = "assets/images/gaming_dark.png";
+  static const String holidayLight = "assets/images/holiday_light.png";
+  static const String holidayDark = "assets/images/holiday_dark.png";
+  static const String meetingLight = "assets/images/meeting_light.png";
+  static const String meetingDark = "assets/images/meeting_dark.png";
+  static const String sportLight = "assets/images/sport_light.png";
+  static const String sportDark = "assets/images/sport_dark.png";
 }
