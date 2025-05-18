@@ -1,15 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/text_styles.dart';
+import '../../../../providers/user_provider.dart';
 
 class CustomUserTabAppBarTitle extends StatelessWidget {
   const CustomUserTabAppBarTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
+    UserProvider provider = Provider.of<UserProvider>(context);
     return Container(
       decoration: BoxDecoration(
         color: AppColors.primaryLight,
@@ -30,10 +32,14 @@ class CustomUserTabAppBarTitle extends StatelessWidget {
             spacing: 10.h,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Ahmed Fayed", style: TextStyles.bold24White),
+              provider.isLoading
+                  ? CircularProgressIndicator(color: AppColors.white)
+                  : Text(
+                    provider.user?.name ?? "No Name",
+                    style: TextStyles.bold24White,
+                  ),
               Text(
-                FirebaseAuth.instance.currentUser?.email ??
-                    "ahmedfayed@route.com",
+                provider.user?.email ?? "No Email",
                 style: TextStyles.medium16White,
               ),
             ],
