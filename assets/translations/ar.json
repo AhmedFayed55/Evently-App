@@ -78,5 +78,8 @@
   "wrong_password_for_this_user": "تم إدخال كلمة مرور خاطئة لهذا المستخدم.",
   "login_successfully": "تم تسجيل الدخول بنجاح، مرحبًا بعودتك",
   "reset_password_email_sent": "تم إرسال رابط إلى بريدك الإلكتروني، يمكنك من خلاله إعادة تعيين كلمة المرور.",
-  "this_field_is_required": "يجب ملء هذا الحقل"
+  "this_field_is_required": "يجب ملء هذا الحقل",
+  "create_your_event": "يتم انشاء الحدث الخاص بك....",
+  "add_your_event_successfully": "تم اضافه الاحدث بنجاح",
+  "please_enter_date_and_time": "من فضلك ادخل التاريخ والوقت"
 }

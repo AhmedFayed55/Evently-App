@@ -83,4 +83,9 @@ class AppStrings {
   static const String loginSuccessfully = "login_successfully";
   static const String resetPasswordEmailSent = "reset_password_email_sent";
   static const String thisFieldIsRequired = "this_field_is_required";
+  static const String creatingYourEvent = "create_your_event";
+  static const String addYourEventSuccessfully = "add_your_event_successfully";
+  static const String pleaseEnterDateAndTime = "please_enter_date_and_time";
+  static const String userCollection = "User";
+  static const String eventsCollection = "Events";
 }

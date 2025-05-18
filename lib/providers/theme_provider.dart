@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ThemeProvider extends ChangeNotifier {
-  ThemeMode currentTheme = ThemeMode.light;
+import '../core/helpers/shared_prefrence.dart';
+import '../core/utils/app_strings.dart';
 
-  // SharedPreferenceUtils.getThemeMode(
-  //   AppStrings.currentThemeMode,
-  // );
+class ThemeProvider extends ChangeNotifier {
+  ThemeMode currentTheme = SharedPreferenceUtils.getThemeMode(
+    AppStrings.currentThemeMode,
+  );
 
   void changeThemeMode(ThemeMode newThemeMode) {
     if (newThemeMode == currentTheme) {

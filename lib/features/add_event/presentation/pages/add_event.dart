@@ -1,7 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:evently_app/core/firebase/firestore_handler.dart';
+import 'package:evently_app/core/helpers/flutter_toast.dart';
 import 'package:evently_app/core/re_useable_widgets/CustomButton.dart';
+import 'package:evently_app/core/utils/app_colors.dart';
+import 'package:evently_app/core/utils/app_routes.dart';
 import 'package:evently_app/core/utils/app_strings.dart';
 import 'package:evently_app/core/utils/text_styles.dart';
+import 'package:evently_app/features/add_event/data/models/event.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -26,12 +33,11 @@ class _AddEventScreenState extends State<AddEventScreen> {
   late TextEditingController titleController;
   late TextEditingController descriptionController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  final List<String> eventImagesDark = EventData.eventImages.keys.toList();
+  final List<String> eventImagesLight = EventData.eventImages.values.toList();
   @override
   Widget build(BuildContext context) {
     ThemeProvider provider = Provider.of<ThemeProvider>(context);
-    final List<String> eventImagesDark = EventData.eventImages.keys.toList();
-    final List<String> eventImagesLight = EventData.eventImages.values.toList();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -108,7 +114,6 @@ class _AddEventScreenState extends State<AddEventScreen> {
 
   DateTime? selectedDate;
   String? formatedDate;
-
   void chooseEventDate() async {
     DateTime? date = await showDatePicker(
       context: context,
@@ -126,7 +131,6 @@ class _AddEventScreenState extends State<AddEventScreen> {
 
   TimeOfDay? selectedTime;
   String? formatedTime;
-
   void chooseEventTime() async {
     TimeOfDay? time = await showTimePicker(
       context: context,
@@ -141,5 +145,26 @@ class _AddEventScreenState extends State<AddEventScreen> {
     }
   }
 
-  void addEvent() {}
+  void addEvent() async {
+    if (formKey.currentState!.validate()) {
+      if (selectedDate != null && selectedTime != null) {
+        DateTime eventDate = DateTime(
+            selectedDate!.year, selectedDate!.month, selectedDate!.day,
+            selectedTime!.hour, selectedTime!.minute);
+        Event newEvent = Event(title: titleController.text,
+            description: descriptionController.text,
+            imagePath: eventImagesDark[selectedIndex],
+            date: Timestamp.fromDate(eventDate),
+            uId: FirebaseAuth.instance.currentUser!.uid,
+            category: EventData.eventNames[selectedIndex]);
+        await FireStoreHandler.createEvent(newEvent);
+        ToastMessage.toastMsg(
+            AppStrings.addYourEventSuccessfully, Colors.green, AppColors.white);
+        Navigator.of(context).pushReplacementNamed(AppRoutes.homeScreen);
+      } else {
+        ToastMessage.toastMsg(
+            AppStrings.pleaseEnterDateAndTime, Colors.red, AppColors.white);
+      }
+    }
+  }
 }

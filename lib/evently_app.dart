@@ -3,6 +3,7 @@ import 'package:evently_app/features/add_event/presentation/pages/add_event.dart
 import 'package:evently_app/features/auth/presentation/pages/forget_pass.dart';
 import 'package:evently_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:evently_app/providers/theme_provider.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +40,12 @@ class EventlyApp extends StatelessWidget {
           routes: {
             AppRoutes.startScreen: (_) => const StartScreen(),
             AppRoutes.onboardingScreen: (_) => const OnboardingScreen(),
-            AppRoutes.homeScreen: (_) => const MainScreen(),
+            AppRoutes.homeScreen: (_) =>
+                ChangeNotifierProvider(
+                    create: (context) =>
+                    UserProvider()
+                      ..getUser(),
+                    child: const MainScreen()),
             AppRoutes.login: (_) => const LoginScreen(),
             AppRoutes.register: (_) => const RegisterScreen(),
             AppRoutes.forgetPassword: (_) => ForgetPassword(),
