@@ -31,7 +31,7 @@ class _TabBarCategoriesState extends State<TabBarCategories> {
     final List<String> eventNames = tabBarItems.keys.toList();
     final List<String> icons = tabBarItems.values.toList();
     return Container(
-      padding: EdgeInsets.only(bottom: 25.h),
+      padding: EdgeInsets.only(bottom: 15.h),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.only(
@@ -40,7 +40,7 @@ class _TabBarCategoriesState extends State<TabBarCategories> {
         ),
       ),
       width: double.infinity,
-      height: 70.h,
+      height: 55.h,
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 15.w),
         scrollDirection: Axis.horizontal,

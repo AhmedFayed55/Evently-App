@@ -70,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-    nameController = TextEditingController(text: "ahmed");
+    nameController = TextEditingController(text: "Ahmed Fayed");
     emailController = TextEditingController(text: "ahmedroute@gmail.com");
     passController = TextEditingController(text: "123456@aA");
     rePassController = TextEditingController(text: "123456@aA");
@@ -89,7 +89,9 @@ class _RegisterScreenState extends State<RegisterScreen>
 
   void register() async {
     if (formKey.currentState!.validate()) {
-      viewModel.register(emailController.text, passController.text, context);
+      viewModel.register(
+          emailController.text, passController.text, nameController.text,
+          context);
     }
   }
 
