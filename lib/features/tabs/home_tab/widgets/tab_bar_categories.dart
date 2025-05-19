@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/features/tabs/home_tab/widgets/tab_bar_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +7,11 @@ import '../../../../core/utils/app_images.dart';
 import '../../../../core/utils/app_strings.dart';
 
 class TabBarCategories extends StatefulWidget {
-  TabBarCategories({super.key});
+  const TabBarCategories(
+      {super.key, required this.onIndexChanged, required this.onCategoryChanged});
+
+  final ValueChanged<int> onIndexChanged;
+  final ValueChanged<String> onCategoryChanged;
 
   @override
   State<TabBarCategories> createState() => _TabBarCategoriesState();
@@ -51,9 +56,11 @@ class _TabBarCategoriesState extends State<TabBarCategories> {
               setState(() {
                 selectedIndex = index;
               });
+              widget.onIndexChanged(index);
+              widget.onCategoryChanged(eventNames[index]);
             },
             child: TabBarItemWidget(
-              eventName: eventNames[index],
+              eventName: eventNames[index].tr(),
               icon: icons[index],
               isSelected: selectedIndex == index,
             ),

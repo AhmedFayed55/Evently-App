@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/re_useable_widgets/custom_text_form_field.dart';
 import '../../../../core/utils/app_images.dart';
 import '../../../../core/utils/app_strings.dart';
-import '../../home_tab/widgets/event_item_widget.dart';
 
 class FavoriteTab extends StatefulWidget {
   const FavoriteTab({super.key});
@@ -35,13 +34,13 @@ class _FavoriteTabState extends State<FavoriteTab> {
               hintText: AppStrings.searchForEvent.tr(),
               prefixIconImage: AppImages.searchSvg,
             ),
-            Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.zero,
-                itemCount: 10,
-                itemBuilder: (context, index) => EventItemWidget(),
-              ),
-            ),
+            // Expanded(
+            //   child: ListView.builder(
+            //     padding: EdgeInsets.zero,
+            //     itemCount: 10,
+            //     itemBuilder: (context, index) => EventItemWidget(),
+            //   ),
+            // ),
           ],
         ),
       ),
