@@ -87,5 +87,6 @@ class AppStrings {
   static const String addYourEventSuccessfully = "add_your_event_successfully";
   static const String pleaseEnterDateAndTime = "please_enter_date_and_time";
   static const String userCollection = "User";
+  static const String favoriteCollection = "Favorite";
   static const String eventsCollection = "Events";
 }

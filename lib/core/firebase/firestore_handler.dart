@@ -42,4 +42,31 @@ class FireStoreHandler {
     event.id = doc.id;
     return doc.set(event);
   }
+
+  static Future<List<Event>> getAllEvents() async {
+    CollectionReference<Event> collection = getEventCollection();
+    var querySnapshot = await collection.get();
+    var docList = querySnapshot.docs;
+    var eventList = docList.map((doc) => doc.data(),).toList();
+    return eventList;
+  }
+
+  static Future<List<Event>> getEventsByCategory(String category) async {
+    var collection = getEventCollection().where(
+        "category", isEqualTo: category);
+    var querySnapshot = await collection.get();
+    var docList = querySnapshot.docs;
+    var eventList = docList.map((doc) => doc.data(),).toList();
+    return eventList;
+  }
+
+  static getFavoriteCollection(String uID) {
+    var collection = getUserCollection().doc(uID).collection(
+        AppStrings.favoriteCollection)
+        .withConverter<Event>(
+      fromFirestore: (snapshot, _) => Event.fromFireStore(snapshot.data()),
+      toFirestore: (event, _) => event.toFireStore(),
+    );
+    return collection;
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,7 +36,7 @@ class _EventCategoriesListViewState extends State<EventCategoriesListView> {
             },
             child: EventCategoriesItemWidget(
               icon: EventData.eventIcons[index],
-              eventName: EventData.eventNames[index],
+              eventName: EventData.eventNames[index].tr(),
               isSelected: selectedIndex == index,
             ),
           );
