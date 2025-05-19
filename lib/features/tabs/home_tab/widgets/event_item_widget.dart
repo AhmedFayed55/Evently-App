@@ -1,25 +1,26 @@
 import 'package:evently_app/core/utils/text_styles.dart';
+import 'package:evently_app/features/add_event/data/models/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/utils/app_colors.dart';
 
 class EventItemWidget extends StatelessWidget {
-  const EventItemWidget({super.key});
+  const EventItemWidget({super.key, required this.event});
 
+  final Event event;
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.only(top: 16.h),
+      margin: EdgeInsets.only(top: 16.h, right: 16.h, left: 16.h),
       padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
       height: 212.h,
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.primaryLight, width: 1.5),
         borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
-          image: AssetImage("assets/images/test.png"),
+          image: AssetImage(event.imagePath!),
           fit: BoxFit.fill,
         ),
       ),
@@ -39,34 +40,17 @@ class EventItemWidget extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Text("21", style: TextStyles.bold20Primary),
-                    Text("Nov", style: TextStyles.bold14Primary),
+                    Text(event.date!.toDate().day.toString(),
+                        style: TextStyles.bold20Primary),
+                    Text(DateFormat.MMM().format(event.date!.toDate()),
+                        style: TextStyles.bold14Primary),
                   ],
                 ),
               ),
-              // Container(
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: width * .02, vertical: height * .001),
-              //   decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(12),
-              //       color: AppColors.white),
-              //   child: Column(
-              //     children: [
-              //       Text(
-              //         event.date.day.toString(),
-              //         style: AppStyles.bold20Primary,
-              //       ),
-              //       Text(DateFormat("MMM").format(event.date),
-              //           style: AppStyles.bold16Primary)
-              //     ],
-              //   ),
-              // ),
             ],
           ),
           Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: width * .02,
-              vertical: height * .01,
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h,
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
@@ -75,16 +59,17 @@ class EventItemWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Title", style: Theme.of(context).textTheme.titleLarge),
-                InkWell(
-                  onTap: () {
+                Text(event.title!, style: Theme
+                    .of(context)
+                    .textTheme
+                    .titleLarge),
+                IconButton(
+                  icon: Icon(!event.isFavorite! ? Icons.favorite_border_rounded
+                      : Icons.favorite,
+                    color: AppColors.primaryLight,),
+                  onPressed: () {
                     // todo: update favorite
-                  },
-                  child: Icon(
-                    Icons.favorite_border_rounded,
-                    color: AppColors.primaryLight,
-                  ),
-                ),
+                  },),
               ],
             ),
           ),

@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:evently_app/core/firebase/firestore_handler.dart';
-import 'package:evently_app/core/helpers/flutter_toast.dart';
+import 'package:evently_app/core/di/di.dart';
 import 'package:evently_app/core/re_useable_widgets/CustomButton.dart';
-import 'package:evently_app/core/utils/app_colors.dart';
-import 'package:evently_app/core/utils/app_routes.dart';
 import 'package:evently_app/core/utils/app_strings.dart';
 import 'package:evently_app/core/utils/text_styles.dart';
-import 'package:evently_app/features/add_event/data/models/event.dart';
+import 'package:evently_app/features/add_event/presentation/manager/add_avent_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/helpers/event_details.dart';
+import '../../../../core/helpers/flutter_toast.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../providers/theme_provider.dart';
+import '../../data/models/event.dart';
 import '../widgets/choose_date_or_time.dart';
 import '../widgets/choose_location_container.dart';
 import '../widgets/event_categories_list_view.dart';
@@ -35,6 +35,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final List<String> eventImagesDark = EventData.eventImages.keys.toList();
   final List<String> eventImagesLight = EventData.eventImages.values.toList();
+  AddEventViewModel viewModel = injectAddEventViewModel();
   @override
   Widget build(BuildContext context) {
     ThemeProvider provider = Provider.of<ThemeProvider>(context);
@@ -151,19 +152,17 @@ class _AddEventScreenState extends State<AddEventScreen> {
         DateTime eventDate = DateTime(
             selectedDate!.year, selectedDate!.month, selectedDate!.day,
             selectedTime!.hour, selectedTime!.minute);
-        Event newEvent = Event(title: titleController.text,
+        viewModel.createEvent(Event(title: titleController.text,
             description: descriptionController.text,
-            imagePath: eventImagesDark[selectedIndex],
+            imagePath: eventImagesLight[selectedIndex],
             date: Timestamp.fromDate(eventDate),
             uId: FirebaseAuth.instance.currentUser!.uid,
-            category: EventData.eventNames[selectedIndex]);
-        await FireStoreHandler.createEvent(newEvent);
-        ToastMessage.toastMsg(
-            AppStrings.addYourEventSuccessfully, Colors.green, AppColors.white);
-        Navigator.of(context).pushReplacementNamed(AppRoutes.homeScreen);
+            category: EventData.eventNames[selectedIndex]), context,
+            selectedDate, selectedTime);
       } else {
         ToastMessage.toastMsg(
-            AppStrings.pleaseEnterDateAndTime, Colors.red, AppColors.white);
+            AppStrings.pleaseEnterDateAndTime.tr(), Colors.red,
+            AppColors.white);
       }
     }
   }
