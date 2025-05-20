@@ -81,5 +81,7 @@
   "this_field_is_required": "يجب ملء هذا الحقل",
   "create_your_event": "يتم انشاء الحدث الخاص بك....",
   "add_your_event_successfully": "تم اضافه الاحدث بنجاح",
-  "please_enter_date_and_time": "من فضلك ادخل التاريخ والوقت"
+  "please_enter_date_and_time": "من فضلك ادخل التاريخ والوقت",
+  "add_to_favorite_successfully": "تمت اضافته الي المفلضه بنجاح",
+  "remove_from_favorite_successfully": "تم حذفه من المفضله بنجاح"
 }

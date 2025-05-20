@@ -2,16 +2,18 @@ class User {
   String? id;
   String? name;
   String? email;
+  List<String>? favorites;
 
-  User({this.id, this.name, this.email});
+  User({this.id, this.name, this.email, this.favorites});
 
   User.fromFireStore(Map<String, dynamic>? data) {
     id = data?["id"];
     name = data?["name"];
     email = data?["email"];
+    favorites = List<String>.from(data?["favorites"]);
   }
 
   Map<String, dynamic> toFireStore() {
-    return {"id": id, "name": name, "email": email};
+    return {"id": id, "name": name, "email": email, "favorites": favorites};
   }
 }

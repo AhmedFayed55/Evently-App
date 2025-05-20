@@ -27,7 +27,10 @@ class AuthViewModel extends ChangeNotifier {
         );
       },
           (response) async {
-        User newUser = User(id: response.user!.uid, name: name, email: email);
+            User newUser = User(id: response.user!.uid,
+                name: name,
+                email: email,
+                favorites: []);
         await FireStoreHandler.addUser(newUser);
         interface.hideMyLoading();
         interface.showMyMessage(
