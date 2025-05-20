@@ -56,11 +56,11 @@ class FireStoreHandler {
         "category", isEqualTo: category);
     var querySnapshot = await collection.get();
     var docList = querySnapshot.docs;
-    var eventList = docList.map((doc) => doc.data(),).toList();
+    var eventList = docList.map((doc) => doc.data()).toList();
     return eventList;
   }
 
-  static getFavoriteCollection(String uID) {
+  static CollectionReference<Event> getFavoriteCollection(String uID) {
     var collection = getUserCollection().doc(uID).collection(
         AppStrings.favoriteCollection)
         .withConverter<Event>(
@@ -68,5 +68,33 @@ class FireStoreHandler {
       toFirestore: (event, _) => event.toFireStore(),
     );
     return collection;
+  }
+
+  static Future<void> addToFavorite(String uID, Event event) {
+    var collection = getFavoriteCollection(uID);
+    var doc = collection.doc(event.id);
+    return doc.set(event);
+  }
+
+  static Future<void> removeFromFavorite(String uID, String eventId) {
+    var collection = getFavoriteCollection(uID);
+    return collection.doc(eventId).delete();
+  }
+
+  static Future<List<Event>> getMyFavorite(String uId) async {
+    var collection = getFavoriteCollection(uId);
+    var querySnapshot = await collection.get();
+    var docList = querySnapshot.docs;
+    var eventList = docList.map((doc) => doc.data()).toList();
+    return eventList;
+  }
+
+  static Future<void> updateUserFavorites(String uId,
+      List<String> newFavorites) {
+    var collection = getUserCollection();
+    var doc = collection.doc(uId);
+    return doc.update({
+      "favorites": newFavorites
+    });
   }
 }
