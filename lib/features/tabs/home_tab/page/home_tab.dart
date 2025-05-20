@@ -23,7 +23,8 @@ class _HomeTabState extends State<HomeTab> {
     return Column(
       children: [
         HomeTabCustomAppBar(),
-        TabBarCategories(onIndexChanged: (newIndex) {
+        TabBarCategories(
+          onIndexChanged: (newIndex) {
           setState(() {
             selectedIndex = newIndex;
           });
