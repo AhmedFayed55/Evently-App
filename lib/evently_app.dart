@@ -15,6 +15,7 @@ import 'features/auth/presentation/pages/register.dart';
 import 'features/main_screen/main_screen.dart';
 import 'features/onboarding_screen/screen/onboarding_screen.dart';
 import 'features/start_screen/screen/start_screen.dart';
+import 'features/tabs/manager/home_tab_provider.dart';
 
 class EventlyApp extends StatelessWidget {
   const EventlyApp({super.key, required this.routeName});
@@ -40,12 +41,22 @@ class EventlyApp extends StatelessWidget {
           routes: {
             AppRoutes.startScreen: (_) => const StartScreen(),
             AppRoutes.onboardingScreen: (_) => const OnboardingScreen(),
-            AppRoutes.homeScreen: (_) =>
+            AppRoutes.homeScreen:
+                (_) =>
                 ChangeNotifierProvider(
-                    create: (context) =>
-                    UserProvider()
-                      ..getUser(),
-                    child: const MainScreen()),
+                  create: (context) =>
+                  UserProvider()
+                    ..getUser(),
+                  child: MultiProvider(
+                    providers: [
+                      ChangeNotifierProvider(create: (context) =>
+                      UserProvider()
+                        ..getUser()),
+                      ChangeNotifierProvider(create: (_) => EventsProvider()),
+                    ],
+                    child: const MainScreen(),
+                  ),
+                ),
             AppRoutes.login: (_) => const LoginScreen(),
             AppRoutes.register: (_) => const RegisterScreen(),
             AppRoutes.forgetPassword: (_) => ForgetPassword(),
