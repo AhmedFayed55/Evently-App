@@ -7,11 +7,9 @@ import '../../../../core/utils/app_images.dart';
 import '../../../../core/utils/app_strings.dart';
 
 class TabBarCategories extends StatefulWidget {
-  const TabBarCategories(
-      {super.key, required this.onIndexChanged, required this.onCategoryChanged});
+  const TabBarCategories({super.key, required this.onTabChanged});
 
-  final ValueChanged<int> onIndexChanged;
-  final ValueChanged<String> onCategoryChanged;
+  final void Function(int index, String category) onTabChanged;
 
   @override
   State<TabBarCategories> createState() => _TabBarCategoriesState();
@@ -40,8 +38,8 @@ class _TabBarCategoriesState extends State<TabBarCategories> {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(40),
-          bottomRight: Radius.circular(40),
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
         ),
       ),
       width: double.infinity,
@@ -56,8 +54,7 @@ class _TabBarCategoriesState extends State<TabBarCategories> {
               setState(() {
                 selectedIndex = index;
               });
-              widget.onIndexChanged(index);
-              widget.onCategoryChanged(eventNames[index]);
+              widget.onTabChanged(index, eventNames[index]);
             },
             child: TabBarItemWidget(
               eventName: eventNames[index].tr(),
