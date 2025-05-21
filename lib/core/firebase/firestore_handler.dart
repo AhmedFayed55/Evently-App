@@ -48,6 +48,11 @@ class FireStoreHandler {
     var querySnapshot = await collection.get();
     var docList = querySnapshot.docs;
     var eventList = docList.map((doc) => doc.data(),).toList();
+    eventList.sort((event1, event2) {
+      final date1 = event1.date ?? Timestamp.now();
+      final date2 = event2.date ?? Timestamp.now();
+      return date1.compareTo(date2);
+    });
     return eventList;
   }
 
@@ -57,6 +62,12 @@ class FireStoreHandler {
     var querySnapshot = await collection.get();
     var docList = querySnapshot.docs;
     var eventList = docList.map((doc) => doc.data()).toList();
+
+    eventList.sort((event1, event2) {
+      final date1 = event1.date ?? Timestamp.now();
+      final date2 = event2.date ?? Timestamp.now();
+      return date1.compareTo(date2);
+    });
     return eventList;
   }
 
@@ -86,6 +97,13 @@ class FireStoreHandler {
     var querySnapshot = await collection.get();
     var docList = querySnapshot.docs;
     var eventList = docList.map((doc) => doc.data()).toList();
+
+    eventList.sort((event1, event2) {
+      final date1 = event1.date ?? Timestamp.now();
+      final date2 = event2.date ?? Timestamp.now();
+      return date1.compareTo(date2);
+    });
+
     return eventList;
   }
 
