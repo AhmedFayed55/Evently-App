@@ -10,6 +10,8 @@ class Event {
   Timestamp? date;
   double? lat;
   double? lng;
+  String? city;
+  String? country;
 
   Event({
     this.id,
@@ -21,6 +23,8 @@ class Event {
     this.date,
     this.lat,
     this.lng,
+    this.city,
+    this.country
   });
 
   Event.fromFireStore(Map<String, dynamic>? data) {
@@ -33,6 +37,8 @@ class Event {
     date = data?["date"];
     lat = data?["lat"];
     lng = data?["lng"];
+    city = data?["city"];
+    country = data?["country"];
   }
 
   Map<String, dynamic> toFireStore() {
@@ -46,6 +52,8 @@ class Event {
       "date": date,
       "lat": lat,
       "lng": lng,
+      "country": country,
+      "city": city
     };
   }
 }
