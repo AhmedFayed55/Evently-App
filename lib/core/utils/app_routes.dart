@@ -6,4 +6,5 @@ class AppRoutes {
   static const String register = "register";
   static const String forgetPassword = "forget";
   static const String addEvent = "add_event";
+  static const String pickEventLocation = "pick_location";
 }

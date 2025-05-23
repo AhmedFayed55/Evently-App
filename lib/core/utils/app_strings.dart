@@ -90,6 +90,7 @@ class AppStrings {
   static const String removeFromFavoriteSuccessfully =
       "remove_from_favorite_successfully";
   static const String pleaseEnterDateAndTime = "please_enter_date_and_time";
+  static const String tapOnLocationToSelect = "tap_on_location_to_select";
   static const String userCollection = "User";
   static const String favoriteCollection = "Favorite";
   static const String eventsCollection = "Events";

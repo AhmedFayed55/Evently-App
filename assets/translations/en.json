@@ -83,5 +83,6 @@
   "add_your_event_successfully": "Added your event successfully",
   "please_enter_date_and_time": "Please enter date and time",
   "add_to_favorite_successfully": "Added to favorite successfully",
-  "remove_from_favorite_successfully": "Removed from favorite successfully"
+  "remove_from_favorite_successfully": "Removed from favorite successfully",
+  "tap_on_location_to_select": "Tap on location to select"
 }

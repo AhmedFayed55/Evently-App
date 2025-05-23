@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/core/di/di.dart';
 import 'package:evently_app/core/re_useable_widgets/CustomButton.dart';
+import 'package:evently_app/core/utils/app_routes.dart';
 import 'package:evently_app/core/utils/app_strings.dart';
 import 'package:evently_app/core/utils/text_styles.dart';
 import 'package:evently_app/features/add_event/presentation/manager/add_avent_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/helpers/event_details.dart';
@@ -36,6 +38,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
   final List<String> eventImagesDark = EventData.eventImages.keys.toList();
   final List<String> eventImagesLight = EventData.eventImages.values.toList();
   AddEventViewModel viewModel = injectAddEventViewModel();
+  LatLng? selectedLocation;
   @override
   Widget build(BuildContext context) {
     ThemeProvider provider = Provider.of<ThemeProvider>(context);
@@ -46,52 +49,67 @@ class _AddEventScreenState extends State<AddEventScreen> {
           style: TextStyles.medium16Primary.copyWith(fontSize: 18),
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 16.h,
-            children: [
-              EventImageWidget(
-                eventImage:
-                    provider.currentTheme == ThemeMode.light
-                        ? eventImagesLight[selectedIndex]
-                        : eventImagesDark[selectedIndex],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 16.h,
+          children: [
+            EventImageWidget(
+              eventImage:
+              provider.currentTheme == ThemeMode.light
+                  ? eventImagesLight[selectedIndex]
+                  : eventImagesDark[selectedIndex],
+            ),
+            EventCategoriesListView(
+              onIndexChanged: (newIndex) {
+                setState(() {
+                  selectedIndex = newIndex;
+                });
+              },
+            ),
+            Form(
+              key: formKey,
+              child: TitleAndDescriptionFields(
+                titleController: titleController,
+                descriptionController: descriptionController,
               ),
-              EventCategoriesListView(
-                onIndexChanged: (newIndex) {
+            ),
+            CustomDateOrTimeRow(
+              chooseDate: chooseEventDate,
+              chooseTime: chooseEventTime,
+              dateText:
+              selectedDate != null
+                  ? formatedDate!
+                  : AppStrings.chooseDate,
+              timeText:
+              selectedTime != null
+                  ? formatedTime!
+                  : AppStrings.chooseTime,
+            ),
+            ChooseLocationContainer(
+              chooseLocation: () async {
+                final result = await Navigator.pushNamed(
+                  context,
+                  AppRoutes.pickEventLocation,
+                );
+                if (result != null) {
                   setState(() {
-                    selectedIndex = newIndex;
+                    selectedLocation =
+                    result as LatLng; // حفظ الـ eventLocation
                   });
-                },
-              ),
-              Form(
-                key: formKey,
-                child: TitleAndDescriptionFields(
-                  titleController: titleController,
-                  descriptionController: descriptionController,
-                ),
-              ),
-              CustomDateOrTimeRow(
-                chooseDate: chooseEventDate,
-                chooseTime: chooseEventTime,
-                dateText:
-                    selectedDate != null
-                        ? formatedDate!
-                        : AppStrings.chooseDate,
-                timeText:
-                    selectedTime != null
-                        ? formatedTime!
-                        : AppStrings.chooseTime,
-              ),
-              ChooseLocationContainer(chooseLocation: () {}),
-              CustomButton(
-                title: AppStrings.addEvent.tr(),
-                onPressed: addEvent,
-              ),
-            ],
-          ),
+                }
+              },
+              text: selectedLocation == null
+                  ? AppStrings.chooseEventLocation.tr()
+                  : "Location => ${selectedLocation!
+                  .latitude} ${selectedLocation!.longitude}",
+            ),
+            CustomButton(
+              title: AppStrings.addEvent.tr(),
+              onPressed: addEvent,
+            ),
+          ],
         ),
       ),
     );
@@ -148,11 +166,15 @@ class _AddEventScreenState extends State<AddEventScreen> {
 
   void addEvent() async {
     if (formKey.currentState!.validate()) {
-      if (selectedDate != null && selectedTime != null) {
+      if (selectedDate != null && selectedTime != null &&
+          selectedLocation != null) {
         DateTime eventDate = DateTime(
             selectedDate!.year, selectedDate!.month, selectedDate!.day,
             selectedTime!.hour, selectedTime!.minute);
-        viewModel.createEvent(Event(title: titleController.text,
+        viewModel.createEvent(Event(
+            lat: selectedLocation!.latitude,
+            lng: selectedLocation!.longitude,
+            title: titleController.text,
             description: descriptionController.text,
             imagePath: eventImagesLight[selectedIndex],
             date: Timestamp.fromDate(eventDate),
