@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently_app/features/add_event/presentation/pages/add_event.dart';
+import 'package:evently_app/features/add_event/presentation/pages/pick_event_location.dart';
 import 'package:evently_app/features/auth/presentation/pages/forget_pass.dart';
 import 'package:evently_app/features/auth/presentation/pages/login_screen.dart';
 import 'package:evently_app/providers/theme_provider.dart';
@@ -15,7 +16,7 @@ import 'features/auth/presentation/pages/register.dart';
 import 'features/main_screen/main_screen.dart';
 import 'features/onboarding_screen/screen/onboarding_screen.dart';
 import 'features/start_screen/screen/start_screen.dart';
-import 'features/tabs/manager/home_tab_provider.dart';
+import 'features/tabs/manager/events_provider.dart';
 
 class EventlyApp extends StatelessWidget {
   const EventlyApp({super.key, required this.routeName});
@@ -61,6 +62,12 @@ class EventlyApp extends StatelessWidget {
             AppRoutes.register: (_) => const RegisterScreen(),
             AppRoutes.forgetPassword: (_) => ForgetPassword(),
             AppRoutes.addEvent: (_) => const AddEventScreen(),
+            AppRoutes.pickEventLocation: (_) =>
+                ChangeNotifierProvider(
+                    create: (context) =>
+                    EventsProvider()
+                      ..getLocation(),
+                    child: const PickEventLocation()),
           },
           initialRoute:
               FirebaseAuth.instance.currentUser == null

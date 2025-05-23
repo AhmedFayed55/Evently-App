@@ -20,6 +20,11 @@ class AppStyle {
         unselectedItemColor: AppColors.white,
         selectedItemColor: AppColors.white
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AppColors.primaryLight,
+        elevation: 0,
+        foregroundColor: AppColors.white
+    ),
     fontFamily: "Inter",
     scaffoldBackgroundColor: AppColors.background,
     colorScheme: ColorScheme.light(
@@ -121,6 +126,11 @@ class AppStyle {
           fontWeight: FontWeight.bold,
           color: AppColors.white
       ),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AppColors.primaryLight,
+        elevation: 0,
+        foregroundColor: AppColors.white
     ),
     fontFamily: "Inter",
     scaffoldBackgroundColor: AppColors.backgroundDark,

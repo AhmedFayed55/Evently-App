@@ -8,7 +8,7 @@ import '../../../../core/utils/app_images.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/text_styles.dart';
 import '../../home_tab/widgets/event_item_widget.dart';
-import '../../manager/home_tab_provider.dart';
+import '../../manager/events_provider.dart';
 
 class FavoriteTab extends StatefulWidget {
   const FavoriteTab({super.key});

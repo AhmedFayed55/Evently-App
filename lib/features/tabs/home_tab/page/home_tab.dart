@@ -5,7 +5,7 @@ import 'package:evently_app/features/tabs/home_tab/widgets/tab_bar_categories.da
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../manager/home_tab_provider.dart';
+import '../../manager/events_provider.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
