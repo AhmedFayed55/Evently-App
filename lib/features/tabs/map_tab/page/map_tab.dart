@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/map_tab_events_list_view.dart';
+import '../widgets/map_events_list_view.dart';
 
 class MapTab extends StatefulWidget {
   const MapTab({super.key});
@@ -58,16 +58,13 @@ class _MapTabState extends State<MapTab> {
                     ? Center(child: CircularProgressIndicator())
                     : provider.events.isEmpty
                     ? SizedBox.shrink()
-                    : MapEventsListView(events: provider.events,),
+                    : MapTabEventsListView(events: provider.events,),
               ],
             ),
           ),
     );
   }
 }
-
-
-
 
 
 
