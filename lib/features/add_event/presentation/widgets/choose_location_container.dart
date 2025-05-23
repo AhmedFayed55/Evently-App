@@ -9,10 +9,11 @@ import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/text_styles.dart';
 
 class ChooseLocationContainer extends StatelessWidget {
-  const ChooseLocationContainer({super.key, required this.chooseLocation});
+  const ChooseLocationContainer(
+      {super.key, required this.chooseLocation, required this.text});
 
   final void Function() chooseLocation;
-
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +24,7 @@ class ChooseLocationContainer extends StatelessWidget {
           AppStrings.location.tr(),
           style: Theme.of(context).textTheme.titleSmall,
         ),
-        GestureDetector(
+        InkWell(
           onTap: chooseLocation,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
@@ -45,9 +46,12 @@ class ChooseLocationContainer extends StatelessWidget {
                   ),
                   child: SvgPicture.asset(AppImages.gpsSvg),
                 ),
-                Text(
-                  AppStrings.chooseEventLocation.tr(),
-                  style: TextStyles.medium16Primary,
+                Flexible(
+                  child: Text(
+                    text,
+                    style: TextStyles.medium16Primary,
+                    overflow: TextOverflow.clip,
+                  ),
                 ),
                 Spacer(),
                 Icon(Icons.keyboard_arrow_right, color: AppColors.primaryLight),
