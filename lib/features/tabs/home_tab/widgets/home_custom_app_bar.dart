@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:evently_app/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,7 +29,8 @@ class HomeTabCustomAppBar extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Welcome Back ✨", style: TextStyles.regular14White),
+                  Text("${AppStrings.welcomeBack.tr()} ✨",
+                      style: TextStyles.regular14White),
                   provider.isLoading
                       ? CircularProgressIndicator(color: AppColors.white)
                       : Text(

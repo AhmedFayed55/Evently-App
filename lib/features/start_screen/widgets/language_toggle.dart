@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_images.dart';
 
 class LanguageToggle extends StatefulWidget {
@@ -47,7 +48,7 @@ class _LanguageToggleState extends State<LanguageToggle> {
       iconOpacity: 1,
       style: ToggleStyle(
         borderColor: Theme.of(context).colorScheme.primary,
-        indicatorColor: Theme.of(context).colorScheme.primary,
+        indicatorColor: AppColors.lightPrimary,
       ),
       iconList: [
         SvgPicture.asset(AppImages.englishIcon, height: 30, width: 30),

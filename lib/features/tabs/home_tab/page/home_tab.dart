@@ -1,3 +1,4 @@
+import 'package:evently_app/core/utils/app_routes.dart';
 import 'package:evently_app/core/utils/text_styles.dart';
 import 'package:evently_app/features/tabs/home_tab/widgets/event_item_widget.dart';
 import 'package:evently_app/features/tabs/home_tab/widgets/home_custom_app_bar.dart';
@@ -64,8 +65,14 @@ class _HomeTabState extends State<HomeTab> {
             padding: EdgeInsets.zero,
             itemCount: provider.events.length,
             itemBuilder: (context, index) =>
-                EventItemWidget(
-                    event: provider.events[index]),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.eventDetails,
+                        arguments: provider.events[index]);
+                  },
+                  child: EventItemWidget(
+                      event: provider.events[index]),
+                ),
           ),
         ),
       ],
