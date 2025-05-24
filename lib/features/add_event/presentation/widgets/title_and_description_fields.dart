@@ -42,6 +42,7 @@ class TitleAndDescriptionFields extends StatelessWidget {
           style: Theme.of(context).textTheme.titleSmall,
         ),
         TextFormField(
+          style: Theme.of(context).textTheme.titleSmall,
           maxLines: 3,
           validator: (val) {
             if (val == null || val.trim().isEmpty) {

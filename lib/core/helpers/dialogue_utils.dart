@@ -47,7 +47,7 @@ class DialogueUtils {
             Navigator.pop(context);
             posAction?.call();
           },
-          child: Text(posActionName, style: TextStyles.medium16Primary),
+          child: Text(posActionName, style: TextStyles.medium16Black),
         ),
       );
     }
@@ -68,7 +68,7 @@ class DialogueUtils {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: Text(message),
+          content: Text(message, style: TextStyles.medium16Black,),
           title: Text(title ?? "", style: TextStyles.medium16Black),
           actions: actions,
         );
