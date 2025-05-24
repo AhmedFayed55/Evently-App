@@ -1,4 +1,6 @@
 📱 Evently App
+
+
 Evently is a modern Flutter application designed for creating and managing events with a smooth, intuitive, and responsive user experience. It supports both light and dark themes, multilingual content, and advanced integrations like Firebase, Google Sign-In, and maps.
 This app marks my first experience implementing clean code principles and the MVVM architecture, combining practical functionality with a well-structured codebase.
 
