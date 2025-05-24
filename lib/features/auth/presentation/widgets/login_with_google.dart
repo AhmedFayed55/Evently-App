@@ -8,12 +8,14 @@ import '../../../../core/utils/app_images.dart';
 import '../../../../core/utils/app_strings.dart';
 
 class LoginWithGoogle extends StatelessWidget {
-  const LoginWithGoogle({super.key});
+  const LoginWithGoogle({super.key, required this.googleSignIn});
+
+  final void Function() googleSignIn;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: googleSignIn,
       child: Container(
         height: 55.h,
         decoration: BoxDecoration(
