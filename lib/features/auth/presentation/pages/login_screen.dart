@@ -10,8 +10,10 @@ import 'package:evently_app/features/auth/presentation/manager/auth_view_model.d
 import 'package:evently_app/features/auth/presentation/widgets/forget_password_text.dart';
 import 'package:evently_app/features/auth/presentation/widgets/login_fields.dart';
 import 'package:evently_app/features/start_screen/widgets/language_toggle.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/di/di.dart';
 import '../widgets/login_with_google.dart';
@@ -60,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> implements AuthInterface {
                   verticalSpace(30),
                   const OrWidget(),
                   verticalSpace(30),
-                  LoginWithGoogle(),
+                  LoginWithGoogle(googleSignIn: signInWithGoogle,),
                   verticalSpace(30),
                   const LanguageToggle(),
                 ],
@@ -89,10 +91,40 @@ class _LoginScreenState extends State<LoginScreen> implements AuthInterface {
     passController.dispose();
   }
 
-  login() async {
+  void login() async {
     if (formKey.currentState!.validate()) {
       viewModel.login(emailController.text, passController.text, context);
     }
+  }
+
+  signInWithGoogle() async {
+    DialogueUtils.showLoading(
+        context: context, message: AppStrings.processingYourRequest.tr());
+    try {
+      await _googleLogin();
+      DialogueUtils.hideLoading(context);
+      Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  _googleLogin() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser
+        ?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   @override
