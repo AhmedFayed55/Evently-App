@@ -94,4 +94,8 @@ class AppStrings {
   static const String userCollection = "User";
   static const String favoriteCollection = "Favorite";
   static const String eventsCollection = "Events";
+  static const String eventDetails = "event_details";
+  static const String editEvent = "edit_event";
+  static const String updateEvent = "update_event";
+  static const String updatedYourEventSuccessfully = "updated_your_event";
 }

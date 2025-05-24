@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'core/utils/app_routes.dart';
 import 'core/utils/app_theme.dart';
 import 'features/auth/presentation/pages/register.dart';
+import 'features/event_details/presentation/page/event_details.dart';
 import 'features/main_screen/main_screen.dart';
 import 'features/onboarding_screen/screen/onboarding_screen.dart';
 import 'features/start_screen/screen/start_screen.dart';
@@ -62,6 +63,7 @@ class EventlyApp extends StatelessWidget {
             AppRoutes.register: (_) => const RegisterScreen(),
             AppRoutes.forgetPassword: (_) => ForgetPassword(),
             AppRoutes.addEvent: (_) => const AddEventScreen(),
+            AppRoutes.eventDetails: (_) => const EventDetails(),
             AppRoutes.pickEventLocation: (_) =>
                 ChangeNotifierProvider(
                     create: (context) =>

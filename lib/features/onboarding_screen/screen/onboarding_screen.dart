@@ -91,7 +91,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     if (activeIndex ==
                         OnboardingModel.onboardingList.length - 1) {
                       Navigator.of(context).pushNamedAndRemoveUntil(
-                        AppRoutes.homeScreen,
+                        AppRoutes.login,
                         (route) => false,
                       );
                       SharedPreferenceUtils.saveData(

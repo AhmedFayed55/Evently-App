@@ -11,6 +11,8 @@ abstract class AppImages {
   static const String authLogo = "assets/images/auth_logo.png";
   static const String emailSvg = "assets/images/email_svg.svg";
   static const String passwordSvg = "assets/images/password_svg.svg";
+  static const String editIconSvg = "assets/images/edit_icon.svg";
+  static const String deleteIconSvg = "assets/images/delete_icon.svg";
   static const String googleSvg = "assets/images/google_svg.svg";
   static const String nameSvg = "assets/images/name_svg.svg";
   static const String forgetPass = "assets/images/forget_pass.png";
@@ -50,4 +52,5 @@ abstract class AppImages {
   static const String meetingDark = "assets/images/meeting_dark.png";
   static const String sportLight = "assets/images/sport_light.png";
   static const String sportDark = "assets/images/sport_dark.png";
+  static const String hugeMap = "assets/images/map.png";
 }

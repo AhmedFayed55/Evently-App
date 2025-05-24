@@ -28,6 +28,7 @@ class AppStyle {
     fontFamily: "Inter",
     scaffoldBackgroundColor: AppColors.background,
     colorScheme: ColorScheme.light(
+      primaryFixed: Colors.white,
       primary: AppColors.lightPrimary,
       secondary: AppColors.lightSecondary,
       tertiary: AppColors.lightTeritary,
@@ -38,7 +39,7 @@ class AppStyle {
         // for selected label in tabs
         onPrimaryFixed: AppColors.primaryLight,
         //for tab bar item svg color
-        onTertiary: Color(0xffF2FEFF)
+      onTertiary: Color(0xffF2FEFF),
     ),
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(
@@ -135,6 +136,7 @@ class AppStyle {
     fontFamily: "Inter",
     scaffoldBackgroundColor: AppColors.backgroundDark,
     colorScheme: ColorScheme.dark(
+        primaryFixed: Colors.black,
         primary: AppColors.primaryDark,
       secondary: AppColors.darkSecondary,
       tertiary: AppColors.darkTeritary,

@@ -46,7 +46,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
       appBar: AppBar(
         title: Text(
           AppStrings.createEvent.tr(),
-          style: TextStyles.medium16Primary.copyWith(fontSize: 18),
+          style: TextStyles.medium20Primary,
         ),
       ),
       body: SingleChildScrollView(
@@ -152,6 +152,25 @@ class _AddEventScreenState extends State<AddEventScreen> {
   String? formatedTime;
   void chooseEventTime() async {
     TimeOfDay? time = await showTimePicker(
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            timePickerTheme: TimePickerThemeData(
+              dayPeriodColor: AppColors.red,
+              backgroundColor: Colors.white,
+              dialHandColor: AppColors.primaryLight,
+              dialTextColor: Colors.black,
+              entryModeIconColor: AppColors.primaryLight,
+            ),
+            colorScheme: ColorScheme.light(
+              primary: AppColors.primaryLight,
+              onPrimary: Colors.white,
+              onSurface: Colors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
       context: context,
       initialTime: selectedTime == null ? TimeOfDay.now() : selectedTime!,
     );

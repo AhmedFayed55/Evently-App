@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/helpers/shared_prefrence.dart';
+import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_images.dart';
 
 class ThemeToggle extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
       iconOpacity: 1,
       style: ToggleStyle(
         borderColor: Theme.of(context).colorScheme.primary,
-        indicatorColor: Theme.of(context).colorScheme.primary,
+        indicatorColor: AppColors.lightPrimary,
       ),
       iconList: [
         SvgPicture.asset(
