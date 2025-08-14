@@ -1,3 +1,6 @@
+https://github.com/user-attachments/assets/4ca4de85-a13a-4332-a1d3-5b06a8e33bf4
+
+
 📱 Evently App
 
 
@@ -76,8 +79,4 @@ Seamlessly blended Firebase services with local storage (SharedPreferences) for 
 Clean UI built with user experience as a top priority.
 
 Use Single Responsibility Principle to a large extent, ensuring modular and maintainable code.
-
-
-
-https://github.com/user-attachments/assets/4ca4de85-a13a-4332-a1d3-5b06a8e33bf4
 
